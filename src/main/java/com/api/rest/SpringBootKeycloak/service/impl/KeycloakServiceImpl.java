@@ -51,7 +51,7 @@ public class KeycloakServiceImpl implements IKeycloakService {
     public String createUser(@NonNull UserDTO userDTO) {
 
         int status = 0;
-        UsersResource usersResource = KeycloakProvider.getUserResource();
+        UsersResource usersResource = KeycloakProvider.getUsersResource();
 
         UserRepresentation userRepresentation = new UserRepresentation();
         userRepresentation.setFirstName(userDTO.getFirstName());
@@ -111,7 +111,7 @@ public class KeycloakServiceImpl implements IKeycloakService {
      * @return void
      */
     public void deleteUser(String userId){
-        KeycloakProvider.getUserResource()
+        KeycloakProvider.getUsersResource()
                 .get(userId)
                 .remove();
     }
@@ -137,7 +137,7 @@ public class KeycloakServiceImpl implements IKeycloakService {
         user.setEmailVerified(true);
         user.setCredentials(Collections.singletonList(credentialRepresentation));
 
-        UserResource usersResource = KeycloakProvider.getUserResource().get(userId);
+        UserResource usersResource = KeycloakProvider.getUsersResource().get(userId);
         usersResource.update(user);
     }
 }
