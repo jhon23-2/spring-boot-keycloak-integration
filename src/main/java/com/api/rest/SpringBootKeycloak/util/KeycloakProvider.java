@@ -32,7 +32,7 @@ public class KeycloakProvider {
         return keycloak.realm(REALM_NAME);
     }
 
-    public static UsersResource getUserResource() {
+    public static UsersResource getUsersResource() {
         RealmResource realmResource = getRealmResource();
         return realmResource.users();
     }
